@@ -41,7 +41,30 @@ function App() {
       <header className="App-header">
         <img src={fplLogo} alt="FPL Assistant Manager" className="fpl-logo"/>
         {gameweek ? <h2>Next Gameweek: {gameweek}</h2> : <h2>Loading...</h2>}
-        {teamSelectorData && <pre>{JSON.stringify(teamSelectorData, null, 2)}</pre>}
+        {teamSelectorData && (
+          <div className="formation">
+            <div className="forwards">
+              {teamSelectorData.forwards.map(player => (
+                <div key={player.ID} className="player">{player.Name}</div>
+              ))}
+            </div>
+            <div className="midfielders">
+              {teamSelectorData.midfielders.map(player => (
+                <div key={player.ID} className="player">{player.Name}</div>
+              ))}
+            </div>
+            <div className="defenders">
+              {teamSelectorData.defenders.map(player => (
+                <div key={player.ID} className="player">{player.Name}</div>
+              ))}
+            </div>
+            <div className="goalkeepers">
+              {teamSelectorData.goalkeepers.map(player => (
+                <div key={player.ID} className="player">{player.Name}</div>
+              ))}
+            </div>
+          </div>
+        )}
       </header>
     </div>
   );
