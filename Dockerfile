@@ -4,8 +4,8 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-ARG GO_API_URL
-ENV GO_API_URL $GO_API_URL
+ARG REACT_APP_GO_API
+ENV REACT_APP_GO_API $REACT_APP_GO_API
 RUN npm run build
 
 # Run Stage
