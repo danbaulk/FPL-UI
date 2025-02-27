@@ -36,11 +36,34 @@ function App() {
     fetchGameweek();
   }, []);
 
+  const handleRefresh = async () => {
+    if (!gameweek) {
+      console.error('Gameweek is not set');
+      return;
+    }
+
+    try {
+      await fetch('http://localhost:8081/data/gameweekinput');
+      await Promise.all([
+        fetch(`http://localhost:8081/models/predict?position=1&gameweek=${gameweek}`),
+        fetch(`http://localhost:8081/models/predict?position=2&gameweek=${gameweek}`),
+        fetch(`http://localhost:8081/models/predict?position=3&gameweek=${gameweek}`),
+        fetch(`http://localhost:8081/models/predict?position=4&gameweek=${gameweek}`)
+      ]);
+      console.log('Refresh completed');
+    } catch (error) {
+      console.error('Error during refresh:', error);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="banner">
         <img src={fplLogo} alt="FPL Assistant Manager" className="fpl-logo"/>
-        {gameweek ? <h2>Next Gameweek: {gameweek}</h2> : <h2>Loading...</h2>}
+        <button className="refresh-button" onClick={handleRefresh}>Refresh</button>
+      </div>
+      <header className="App-header">
+        {gameweek ? <h2 className="next-gameweek">Next Gameweek: {gameweek}</h2> : <h2>Loading...</h2>}
         {teamSelectorData && (
           <div className="formation">
             <div className="forwards">
