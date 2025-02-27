@@ -25,7 +25,7 @@ function App() {
 
     const fetchTeamSelector = async (gameweek) => {
       try {
-        const response = await fetch(`http://localhost:8081/team/selector?gameweek=${gameweek}`);
+        const response = await fetch(`http://go-api:8081/team/selector?gameweek=${gameweek}`);
         const data = await response.json();
         setTeamSelectorData(data);
       } catch (error) {
@@ -43,12 +43,12 @@ function App() {
     }
 
     try {
-      await fetch('http://localhost:8081/data/gameweekinput');
+      await fetch('http://go-api:8081/data/gameweekinput');
       await Promise.all([
-        fetch(`http://localhost:8081/models/predict?position=1&gameweek=${gameweek}`),
-        fetch(`http://localhost:8081/models/predict?position=2&gameweek=${gameweek}`),
-        fetch(`http://localhost:8081/models/predict?position=3&gameweek=${gameweek}`),
-        fetch(`http://localhost:8081/models/predict?position=4&gameweek=${gameweek}`)
+        fetch(`http://go-api:8081/models/predict?position=1&gameweek=${gameweek}`),
+        fetch(`http://go-api:8081/models/predict?position=2&gameweek=${gameweek}`),
+        fetch(`http://go-api:8081/models/predict?position=3&gameweek=${gameweek}`),
+        fetch(`http://go-api:8081/models/predict?position=4&gameweek=${gameweek}`)
       ]);
       console.log('Refresh completed');
     } catch (error) {
