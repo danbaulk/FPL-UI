@@ -3,6 +3,7 @@ import fplLogo from './assets/fpl-logo.png';
 import { useState, useEffect } from 'react';
 
 const API_URL = process.env.REACT_APP_GO_API;
+console.log("Go API URL:", API_URL);
 
 function App() {
   const [gameweek, setGameweek] = useState(null);
