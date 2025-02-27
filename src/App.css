@@ -1,38 +1,82 @@
 .App {
   text-align: center;
+  background-color: #23e1fa;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #23e1fa;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #23e1fa;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+}
+
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #310334;
+}
+
+.fpl-logo {
+  width: 100px;
+  height: auto;
+}
+
+.next-gameweek {
+  color: #00faab;
+  background-color: #310334; 
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.refresh-button {
+  background-color: #00faab;
+  color: black;
+  padding: 15px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.refresh-button:hover {
+  background-color: #9632fa;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.formation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 600px;
+  width: 100%;
+  background-image: url('./assets/pitch.png');
+  background-size: cover;
+  background-position: center;
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.goalkeepers, .defenders, .midfielders, .forwards {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.player {
+  background-color: white;
+  border-radius: 5px;
+  margin: 5px;
+  min-width: 100px; 
+  max-width: 300px; 
+  text-align: center;
+  word-wrap: break-word; 
 }
