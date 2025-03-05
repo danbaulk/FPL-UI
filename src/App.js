@@ -11,12 +11,11 @@ function App() {
   useEffect(() => {
     const fetchGameweek = async () => {
       try {
-        const response = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/');
-        const data = await response.json();
-        const nextGameweek = data.events.find(event => event.is_next);
+        const response = await fetch(`${API_URL}/data/nextgameweek`);
+        const nextGameweek = await response.text();
         if (nextGameweek) {
-          setGameweek(nextGameweek.id);
-          fetchTeamSelector(nextGameweek.id);
+          setGameweek(nextGameweek);
+          fetchTeamSelector(nextGameweek);
         } else {
           console.error('No next gameweek found');
         }
